@@ -1,5 +1,7 @@
 #pragma once
 #include "BaseComponent.h"
+#include "Helpers.h"
+
 
 namespace dae
 {
@@ -12,9 +14,11 @@ namespace dae
 
 		void Update(float deltaTime) override;
 		void SetTexture(const std::string& filename);
+		void SetSourceRect(int x, int y, int width, int height);
 		void Render() const override;
 	private:
 		std::shared_ptr<Texture2D> m_pTexture{};
+		Rect m_SourceRect{};
 	};
 }
 

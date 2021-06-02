@@ -76,6 +76,19 @@ void dae::Minigin::LoadGame() const
 		}
 	}
 
+	// Spawning Qbert
+	go = std::make_shared<GameObject>();
+	RenderComponent* prc4 = new RenderComponent{ go.get() };
+	GridComponent* pgc2 = new GridComponent{ go.get() };
+	pgc2->SetGrid(pyramidHeight, pyramidHeight);
+	prc4->SetTexture("QBert.png");
+	prc4->SetPosition(310, 60);
+	prc4->SetSourceRect(127, 0, 32, 32);
+
+	go->AddComponent(prc4);
+	go->AddComponent(pgc2);
+	scene.Add(go);
+
 	go = std::make_shared<GameObject>();
 	auto font2 = ResourceManager::GetInstance().LoadFont("Lingua.otf", 18);
 	TextRenderComponent* ptc2 = new TextRenderComponent{ "FPS: ", font2, go.get() };
