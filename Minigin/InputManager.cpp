@@ -13,6 +13,16 @@ bool InputManager::ProcessInput()
 		if (e.type == SDL_QUIT) {
 			return false;
 		}
+		for (auto& temp : m_KeyboardControls)
+		{
+			if(e.type == SDL_KEYUP)
+			{
+				if(temp.first == e.key.keysym.scancode)
+				{
+					temp.second->Execute();
+				}
+			}
+		}
 	}
 
 	for (auto& temp : m_Controls)
@@ -76,6 +86,11 @@ void InputManager::BindCommand(ControllerButton button, Command* com)
 {
 	m_LastFrameInput.insert(std::pair<ControllerButton, bool>(button, false));
 	m_Controls.insert(std::pair<ControllerButton, Command*>(button, com));
+}
+
+void InputManager::BindCommand(SDL_Scancode button, Command* com)
+{
+	m_KeyboardControls.insert(std::pair<SDL_Scancode, Command*>(button, com));
 }
 
 void InputManager::RunCommand(ControllerButton button)

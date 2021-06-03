@@ -2,10 +2,13 @@
 #include "GameObject.h"
 #include "Events.h"
 
-	class Observer
+	class Observer : public BaseComponent
 	{
 	public:
-		Observer();
+		Observer(GameObject* parent);
 		void Notify(const GameObject& actor, Event event);
+
+		void Update(float deltaTime) override;
+		void Render() const override;
 	};
 

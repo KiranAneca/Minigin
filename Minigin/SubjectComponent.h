@@ -7,11 +7,15 @@
 	{
 	public:
 		SubjectComponent(GameObject* parent);
+		
 		void AddObserver(Observer* observer);
 		void RemoveObserver(Observer* observer);
 		void Notify(const GameObject& actor, Event event);
+
+		void Update(float deltaTime) override;
+		void Render() const override;
 	
 	private:
-		Observer* m_Observers[3];
+		std::vector<Observer*> m_Observers;
 	};
 
