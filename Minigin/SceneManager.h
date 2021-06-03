@@ -1,8 +1,6 @@
 #pragma once
 #include "Singleton.h"
 
-namespace dae
-{
 	class Scene;
 	class SceneManager final : public Singleton<SceneManager>
 	{
@@ -17,4 +15,3 @@ namespace dae
 		SceneManager() = default;
 		std::vector<std::shared_ptr<Scene>> m_Scenes;
 	};
-}

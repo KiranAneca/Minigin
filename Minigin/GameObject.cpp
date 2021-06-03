@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "Renderer.h"
 
-dae::GameObject::~GameObject()
+GameObject::~GameObject()
 {
 	for(size_t i = 0; i < m_Components.size(); ++i)
 	{
@@ -11,12 +11,12 @@ dae::GameObject::~GameObject()
 	}
 }
 
-void dae::GameObject::AddComponent(BaseComponent* comp)
+void GameObject::AddComponent(BaseComponent* comp)
 {
 	m_Components.push_back(comp);
 }
 
-void dae::GameObject::Update(float deltaTime)
+void GameObject::Update(float deltaTime)
 {
 	// Loop over all the gameObjects and update them
 	for(size_t i = 0; i < m_Components.size(); ++i)
@@ -25,7 +25,7 @@ void dae::GameObject::Update(float deltaTime)
 	}
 }
 
-void dae::GameObject::Render() const
+void GameObject::Render() const
 {
 	const auto pos = m_Transform.GetPosition();
 	for(size_t i = 0; i < m_Components.size(); ++i)
@@ -42,17 +42,17 @@ void dae::GameObject::Render() const
 	}
 }
 
-void dae::GameObject::SetTexture(const std::string& filename)
+void GameObject::SetTexture(const std::string& filename)
 {
 	m_Texture = ResourceManager::GetInstance().LoadTexture(filename);
 }
 
-void dae::GameObject::SetPosition(float x, float y)
+void GameObject::SetPosition(float x, float y)
 {
 	m_Transform.SetPosition(x, y, 0.0f);
 }
 
-std::vector<dae::BaseComponent*> dae::GameObject::GetComponents() const
+std::vector<BaseComponent*> GameObject::GetComponents() const
 {
 	return m_Components;
 }

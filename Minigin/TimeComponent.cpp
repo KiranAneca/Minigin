@@ -4,18 +4,18 @@
 #include "GameObject.h"
 #include "TextRenderComponent.h"
 
-dae::TimeComponent::TimeComponent(GameObject* parent)
+TimeComponent::TimeComponent(GameObject* parent)
 	:BaseComponent(parent)
 	, m_Frames(0)
 	, m_SecondCounter(0)
 {
 }
 
-dae::TimeComponent::~TimeComponent()
+TimeComponent::~TimeComponent()
 {
 }
 
-void dae::TimeComponent::Update(float deltaTime)
+void TimeComponent::Update(float deltaTime)
 {
 	m_SecondCounter += deltaTime;
 	m_Frames++;
@@ -33,11 +33,11 @@ void dae::TimeComponent::Update(float deltaTime)
 	}
 }
 
-void dae::TimeComponent::Render() const
+void TimeComponent::Render() const
 {
 }
 
-int dae::TimeComponent::GetFrames() const
+int TimeComponent::GetFrames() const
 {
 	return m_Frames;
 }

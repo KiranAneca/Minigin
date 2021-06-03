@@ -7,7 +7,7 @@
 #include "Font.h"
 #include "Texture2D.h"
 
-dae::TextRenderComponent::TextRenderComponent(const std::string& text, const std::shared_ptr<Font>& font, GameObject* parent)
+TextRenderComponent::TextRenderComponent(const std::string& text, const std::shared_ptr<Font>& font, GameObject* parent)
 	: BaseComponent(parent)
 	, m_Text(text)
 	, m_Font(font)
@@ -16,11 +16,11 @@ dae::TextRenderComponent::TextRenderComponent(const std::string& text, const std
 {
 }
 
-dae::TextRenderComponent::~TextRenderComponent()
+TextRenderComponent::~TextRenderComponent()
 {
 }
 
-void dae::TextRenderComponent::Update(float deltaTime)
+void TextRenderComponent::Update(float deltaTime)
 {
 	if (m_NeedsUpdate)
 	{
@@ -42,16 +42,16 @@ void dae::TextRenderComponent::Update(float deltaTime)
 	}
 }
 
-void dae::TextRenderComponent::Render() const
+void TextRenderComponent::Render() const
 {
 	if (m_pTexture != nullptr)
 	{
 		const auto pos = m_Transform.GetPosition();
-		dae::Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
+		Renderer::GetInstance().RenderTexture(*m_pTexture, pos.x, pos.y);
 	}
 }
 
-void dae::TextRenderComponent::SetText(const std::string& text)
+void TextRenderComponent::SetText(const std::string& text)
 {
 	m_Text = text;
 	m_NeedsUpdate = true;

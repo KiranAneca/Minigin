@@ -6,8 +6,6 @@
 #include "BaseComponent.h"
 #include "TextRenderComponent.h"
 
-namespace dae
-{
 	class Texture2D;
 	class GameObject final : public SceneObject
 	{
@@ -48,4 +46,3 @@ namespace dae
 		}
 		return nullptr;
 	}
-}

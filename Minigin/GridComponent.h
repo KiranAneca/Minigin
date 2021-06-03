@@ -2,8 +2,6 @@
 #include "BaseComponent.h"
 #include "Helpers.h"
 
-namespace dae
-{
 	class Texture2D;
 	class GridComponent : public BaseComponent
 	{
@@ -21,5 +19,4 @@ namespace dae
 	private:
 		int2 m_Grid;
 	};
-}
 

@@ -1,6 +1,4 @@
 #pragma once
-namespace dae
-{
 	class SceneObject
 	{
 	public:
@@ -14,4 +12,3 @@ namespace dae
 		SceneObject& operator=(const SceneObject& other) = delete;
 		SceneObject& operator=(SceneObject&& other) = delete;
 	};
-}

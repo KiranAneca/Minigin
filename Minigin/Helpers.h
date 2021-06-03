@@ -16,6 +16,22 @@ struct int2
 	int y;
 };
 
+struct float2
+{
+	float2()
+	{
+		x = 0;
+		y = 0;
+	}
+	float2(float X, float Y)
+	{
+		x = X;
+		y = Y;
+	}
+	float x;
+	float y;
+};
+
 struct Rect
 {
 	int x;

@@ -6,9 +6,8 @@
 #include "TextRenderComponent.h"
 #include "TimeComponent.h"
 
+
 struct SDL_Window;
-namespace dae
-{
 	class Minigin
 	{
 	public:
@@ -17,6 +16,12 @@ namespace dae
 		void StartGame(int playerAmount);
 		void Cleanup();
 		void Run();
+
+		virtual void InitializeApplication() = 0;
+		virtual void LoadApllication() const = 0;
+		virtual void CleanupApplication() = 0;
+		virtual void RunApplication() = 0;
+	
 	private:
 		static const int MsPerFrame = 16; //16 for 60 fps, 33 for 30 fps
 		SDL_Window* m_Window{};
@@ -26,4 +31,3 @@ namespace dae
 		
 		std::vector<GameObject*> m_pPlayers;
 	};
-}

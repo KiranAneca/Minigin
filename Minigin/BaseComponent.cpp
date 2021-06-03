@@ -1,16 +1,24 @@
 #include "MiniginPCH.h"
 #include "BaseComponent.h"
 
-dae::BaseComponent::BaseComponent(GameObject* parent)
+BaseComponent::BaseComponent(GameObject* parent)
 	: m_Parent(parent)
 {
 }
 
-dae::BaseComponent::~BaseComponent()
+BaseComponent::~BaseComponent()
 {
 }
 
-void dae::BaseComponent::SetPosition(float x, float y)
+void BaseComponent::SetPosition(float x, float y)
 {
 	m_Transform.SetPosition(x, y, m_Transform.GetPosition().z);
+}
+
+float2 BaseComponent::GetPosition() const
+{
+	float2 temp;
+	temp.x = m_Transform.GetPosition().x;
+	temp.y = m_Transform.GetPosition().y;
+	return temp;
 }

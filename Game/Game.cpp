@@ -1,12 +1,12 @@
 #include <iostream>
 
 #include <Minigin.h>
-
+#include "Application.h"
 
 int main()
 {
-	dae::Minigin engine;
-	engine.Run();
+	Application game;
+	game.Run();
 	return 0;
 }
 

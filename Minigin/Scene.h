@@ -1,8 +1,6 @@
 #pragma once
 #include "SceneManager.h"
 
-namespace dae
-{
 	class SceneObject;
 	class Scene
 	{
@@ -31,4 +29,3 @@ namespace dae
 		static unsigned int m_IdCounter; 
 	};
 
-}

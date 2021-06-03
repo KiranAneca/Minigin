@@ -1,8 +1,6 @@
 #pragma once
 #include "BaseComponent.h"
 
-namespace dae
-{
 	class TimeComponent : public BaseComponent
 	{
 	public:
@@ -17,5 +15,4 @@ namespace dae
 		float m_SecondCounter;
 		int m_Frames;
 	};
-}
 

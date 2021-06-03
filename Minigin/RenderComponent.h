@@ -3,8 +3,7 @@
 #include "Helpers.h"
 
 
-namespace dae
-{
+
 	class Texture2D;
 	class RenderComponent : public BaseComponent
 	{
@@ -20,5 +19,5 @@ namespace dae
 		std::shared_ptr<Texture2D> m_pTexture{};
 		Rect m_SourceRect{};
 	};
-}
+
 

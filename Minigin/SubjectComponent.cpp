@@ -1,7 +1,7 @@
 #include "MiniginPCH.h"
 #include "SubjectComponent.h"
 
-dae::SubjectComponent::SubjectComponent(GameObject* parent)
+SubjectComponent::SubjectComponent(GameObject* parent)
 	:BaseComponent(parent)
 {
 	for (size_t i = 0; i < 3; ++i)
@@ -10,7 +10,7 @@ dae::SubjectComponent::SubjectComponent(GameObject* parent)
 	}
 }
 
-void dae::SubjectComponent::AddObserver(Observer* observer)
+void SubjectComponent::AddObserver(Observer* observer)
 {
 	for(size_t i = 0; i < 3; ++i)
 	{
@@ -21,7 +21,7 @@ void dae::SubjectComponent::AddObserver(Observer* observer)
 	}
 }
 
-void dae::SubjectComponent::RemoveObserver(Observer* observer)
+void SubjectComponent::RemoveObserver(Observer* observer)
 {
 	for (size_t i = 0; i < 3; ++i)
 	{
@@ -32,7 +32,7 @@ void dae::SubjectComponent::RemoveObserver(Observer* observer)
 	}
 }
 
-void dae::SubjectComponent::Notify(const GameObject& actor, Event event)
+void SubjectComponent::Notify(const GameObject& actor, Event event)
 {
 	for(size_t i = 0; i < 3; ++i)
 	{

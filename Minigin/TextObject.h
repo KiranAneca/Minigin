@@ -2,8 +2,6 @@
 #include "SceneObject.h"
 #include "Transform.h"
 
-namespace dae
-{
 	class Font;
 	class Texture2D;
 	class TextObject final : public SceneObject
@@ -28,4 +26,3 @@ namespace dae
 		std::shared_ptr<Font> m_Font;
 		std::shared_ptr<Texture2D> m_Texture;
 	};
-}

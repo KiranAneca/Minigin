@@ -3,8 +3,6 @@
 #include "Observer.h"
 #include "Events.h"
 
-namespace dae
-{
 	class SubjectComponent : public BaseComponent
 	{
 	public:
@@ -16,5 +14,4 @@ namespace dae
 	private:
 		Observer* m_Observers[3];
 	};
-}
 

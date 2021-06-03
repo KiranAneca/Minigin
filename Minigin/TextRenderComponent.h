@@ -1,8 +1,8 @@
 #pragma once
 #include "BaseComponent.h"
+#include <string>
+#include <memory>
 
-namespace dae
-{
 	class Texture2D;
 	class Font;
 	class TextRenderComponent : public BaseComponent
@@ -22,5 +22,4 @@ namespace dae
 		std::shared_ptr<Texture2D> m_pTexture{};
 		std::shared_ptr<Font> m_Font;
 	};
-}
 

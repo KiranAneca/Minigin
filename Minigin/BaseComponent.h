@@ -1,8 +1,7 @@
 #pragma once
 #include "Transform.h"
+#include "Helpers.h"
 
-namespace dae
-{
 	class GameObject;
 	class BaseComponent
 	{
@@ -11,10 +10,11 @@ namespace dae
 		virtual ~BaseComponent();
 		virtual void Update(float deltaTime) = 0;
 		virtual void Render() const = 0;
+		
 		void SetPosition(float x, float y);
+		float2 GetPosition() const;
 	protected:
-		dae::Transform m_Transform;
+		Transform m_Transform;
 		GameObject* m_Parent;
 	};
-}
 

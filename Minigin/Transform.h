@@ -4,8 +4,6 @@
 #include <glm/glm.hpp>
 #pragma warning(pop)
 
-namespace dae
-{
 	class Transform final
 	{
 	public:
@@ -14,4 +12,3 @@ namespace dae
 	private:
 		glm::vec3 m_Position;
 	};
-}
