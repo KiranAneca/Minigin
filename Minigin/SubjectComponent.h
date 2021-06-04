@@ -1,7 +1,7 @@
 #pragma once
 #include "BaseComponent.h"
 #include "Observer.h"
-#include "Events.h"
+#include "Helpers.h"
 
 	class SubjectComponent : public BaseComponent
 	{

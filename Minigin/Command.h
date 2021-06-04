@@ -31,8 +31,14 @@ public:
 		{
 			m_Ren->SetPosition(pos.x - 32, pos.y + 48);
 			m_Grid->SetGrid(grid.x, grid.y - 1);
-			std::cout << grid.x << " " << grid.y - 1 << std::endl;
-			m_Sub->Notify(*m_Go, Event::ColorTile);
+			//std::cout << grid.x << " " << grid.y - 1 << std::endl;
+			m_Sub->Notify(*m_Go, Event::MoveTile);
+		}
+		else
+		{
+			m_Grid->SetGrid(0, 6);
+			m_Sub->Notify(*m_Go, Event::Died);
+			m_Ren->SetPosition(310, 60);
 		}
 	};
 
@@ -60,8 +66,14 @@ public:
 		{
 			m_Ren->SetPosition(pos.x + 32, pos.y + 48);
 			m_Grid->SetGrid(grid.x + 1, grid.y - 1);
-			std::cout << grid.x + 1 << " " << grid.y - 1 << std::endl;
-			m_Sub->Notify(*m_Go, Event::ColorTile);
+			//std::cout << grid.x + 1 << " " << grid.y - 1 << std::endl;
+			m_Sub->Notify(*m_Go, Event::MoveTile);
+		}
+		else
+		{
+			m_Grid->SetGrid(0, 6);
+			m_Sub->Notify(*m_Go, Event::Died);
+			m_Ren->SetPosition(310, 60);
 		}
 	};
 
@@ -85,12 +97,18 @@ public:
 	{
 		float2 pos = m_Ren->GetPosition();
 		int2 grid = m_Grid->GetGrid();
-		if (grid.x + grid.y < 11)
+		if (grid.x + grid.y < 6)
 		{
 			m_Ren->SetPosition(pos.x + 32, pos.y - 48);
 			m_Grid->SetGrid(grid.x, grid.y + 1);
-			std::cout << grid.x << " " << grid.y + 1 << std::endl;
-			m_Sub->Notify(*m_Go, Event::ColorTile);
+			//std::cout << grid.x + grid.y;
+			m_Sub->Notify(*m_Go, Event::MoveTile);
+		}
+		else
+		{
+			m_Grid->SetGrid(0, 6);
+			m_Sub->Notify(*m_Go, Event::Died);
+			m_Ren->SetPosition(310, 60);
 		}
 	};
 
@@ -114,12 +132,18 @@ public:
 	{
 		float2 pos = m_Ren->GetPosition();
 		int2 grid = m_Grid->GetGrid();
-		if (grid.x != grid.y)
+		if (grid.x > 0)
 		{
 			m_Ren->SetPosition(pos.x - 32, pos.y - 48);
 			m_Grid->SetGrid(grid.x - 1, grid.y + 1);
-			std::cout << grid.x - 1 << " " << grid.y + 1 << std::endl;
-			m_Sub->Notify(*m_Go, Event::ColorTile);
+			//std::cout << grid.x - 1 << " " << grid.y + 1 << std::endl;
+			m_Sub->Notify(*m_Go, Event::MoveTile);
+		}
+		else
+		{
+			m_Grid->SetGrid(0, 6);
+			m_Sub->Notify(*m_Go, Event::Died);
+			m_Ren->SetPosition(310, 60);
 		}
 	};
 

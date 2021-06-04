@@ -3,7 +3,6 @@
 #include "Helpers.h"
 
 
-
 	class Texture2D;
 	class RenderComponent : public BaseComponent
 	{
@@ -13,10 +12,12 @@
 
 		void Update(float deltaTime) override;
 		void SetTexture(const std::string& filename);
+		std::string GetTexture() const;
 		void SetSourceRect(int x, int y, int width, int height);
 		void Render() const override;
 	private:
 		std::shared_ptr<Texture2D> m_pTexture{};
+		std::string m_TextureName;
 		Rect m_SourceRect{};
 	};
 

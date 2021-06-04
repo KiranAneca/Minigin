@@ -24,8 +24,14 @@ void RenderComponent::Update(float deltaTime)
 
 void RenderComponent::SetTexture(const std::string& filename)
 {
+	m_TextureName = filename;
 	m_pTexture = ResourceManager::GetInstance().LoadTexture(filename);
 	SDL_QueryTexture(m_pTexture.get()->GetSDLTexture(), NULL, NULL, &m_SourceRect.w, &m_SourceRect.h);
+}
+
+std::string RenderComponent::GetTexture() const
+{
+	return m_TextureName;
 }
 
 void RenderComponent::SetSourceRect(int x, int y, int width, int height)

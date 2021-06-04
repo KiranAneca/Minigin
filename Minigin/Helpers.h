@@ -39,3 +39,17 @@ struct Rect
 	int w;
 	int h;
 };
+
+enum class Event
+{
+	MoveTile,
+	Died,
+	LevelCleared
+};
+
+enum class GameType
+{
+	Single,
+	Double,
+	Return
+};

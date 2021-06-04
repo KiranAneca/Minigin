@@ -1,0 +1,34 @@
+#pragma once
+#include "Singleton.h"
+#include "Helpers.h"
+#include <iostream>
+
+class GameManager final : public Singleton<GameManager>
+{
+public:
+	void AddTilesLeft(int amount);
+	void SetLives(int amount);
+	void LoseLife();
+
+	int GetLives() const;
+	int GetTilesLeft() const;
+
+	void SetGameType(GameType type);
+	GameType GetGameType() const;
+	std::string GetTileBaseTexture() const;
+	std::string GetTileIntermediateTexture() const;
+	std::string GetTileJumpedTexture() const;
+private:
+	friend class Singleton<GameManager>;
+	GameManager() = default;
+
+	int m_TilesLeft;
+	int m_Lives;
+	int m_Score;
+
+	std::string m_TileBaseTexture = "CubeBase.png";
+	std::string m_TileIntermediateTexture = "CubeIntermediate.png";
+	std::string m_TileCompletedTexture = "CubeJumped.png";
+	GameType m_GameType = GameType::Single;
+};
+

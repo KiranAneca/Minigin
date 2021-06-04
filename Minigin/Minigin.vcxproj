@@ -231,7 +231,6 @@
     <ClInclude Include="..\3rdParty\imgui-master\imstb_truetype.h" />
     <ClInclude Include="BaseComponent.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="Events.h" />
     <ClInclude Include="Font.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GridComponent.h" />
@@ -246,6 +245,7 @@
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="ScoreComponent.h" />
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="SubjectComponent.h" />
     <ClInclude Include="TextObject.h" />
@@ -318,6 +318,7 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="ScoreComponent.cpp" />
     <ClCompile Include="SubjectComponent.cpp" />
     <ClCompile Include="TextObject.cpp" />
     <ClCompile Include="TextRenderComponent.cpp" />
