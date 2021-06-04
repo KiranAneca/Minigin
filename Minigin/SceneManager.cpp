@@ -6,7 +6,10 @@ void SceneManager::Update(float deltaTime)
 {
 	for(auto& scene : m_Scenes)
 	{
-		scene->Update(deltaTime);
+		if(scene->IsActive())
+		{
+			scene->Update(deltaTime);
+		}
 	}
 }
 
@@ -14,7 +17,10 @@ void SceneManager::Render()
 {
 	for (const auto& scene : m_Scenes)
 	{
-		scene->Render();
+		if(scene->IsActive())
+		{
+			scene->Render();
+		}
 	}
 }
 
@@ -35,4 +41,15 @@ Scene& SceneManager::GetActiveScene() const
 		}
 	}
 	return *m_Scenes[0];
+}
+
+void SceneManager::SetSceneActive(bool active, std::string name)
+{
+	for (int i = 0; i < m_Scenes.size(); ++i)
+	{
+		if (m_Scenes[i]->GetSceneName() == name)
+		{
+			m_Scenes[i]->SetActive(active);
+		}
+	}
 }

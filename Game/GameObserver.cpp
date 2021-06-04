@@ -1,6 +1,8 @@
 #include "GameObserver.h"
 #include "GameManager.h"
 #include "ScoreComponent.h"
+#include "RenderComponent.h"
+#include "GridComponent.h"
 #include <iostream>
 #include <windows.h>
 
@@ -17,15 +19,17 @@ void GameObserver::Notify(const GameObject& actor, Event event)
 	switch (event)
 	{
 	case Event::MoveTile:
-		if (gm.GetTilesLeft() == 0)
-		{
-			std::cout << "Level complete\n";
-		}
 		break;
 	case Event::Died:
 		gm.LoseLife();
 		std::cout << gm.GetLives() << " lifes left\n";
-		actor.GetComponent<ScoreComponent>()->SetScore(gm.GetLives());
+		actor.GetComponent<RenderComponent>()->SetPosition(310, 60);
+		actor.GetComponent<GridComponent>()->SetGrid(0, 6);
+		break;
+	case Event::LevelCleared:
+		actor.GetComponent<RenderComponent>()->SetPosition(310, 60);
+		actor.GetComponent<GridComponent>()->SetGrid(0, 6);
+		std::cout << "Level complete\n";
 		break;
 	}
 }

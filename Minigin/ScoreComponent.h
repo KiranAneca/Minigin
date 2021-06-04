@@ -12,6 +12,7 @@ public:
 	void Render() const override;
 
 	void SetScoreType(std::string text);
+	std::string GetScoreType() const;
 	void SetScore(int amount);
 	void AddScore(int amount);
 	int GetScore() const;

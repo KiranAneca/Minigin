@@ -13,6 +13,9 @@ public:
 	int GetLives() const;
 	int GetTilesLeft() const;
 
+	int GetLevel() const;
+	void SetLevel(int lvl);
+	
 	void SetGameType(GameType type);
 	GameType GetGameType() const;
 	std::string GetTileBaseTexture() const;
@@ -25,6 +28,8 @@ private:
 	int m_TilesLeft;
 	int m_Lives;
 	int m_Score;
+
+	int m_Level;
 
 	std::string m_TileBaseTexture = "CubeBase.png";
 	std::string m_TileIntermediateTexture = "CubeIntermediate.png";

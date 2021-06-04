@@ -9,7 +9,12 @@ class Application : public Minigin
 	void RunApplication() override;
 
 private:
-
+	void LoadMainMenu() const;
+	void LoadGameSinglePlayer() const;
+	void LoadGameMultiplayer() const;
+	void LoadGameVersus() const;
+	
 	int m_AmountOfPlayers;
+
 };
 

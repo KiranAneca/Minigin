@@ -114,10 +114,13 @@
     <ClInclude Include="GridComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="ScoreComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
     <ClInclude Include="Command.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ScoreComponent.h">
+    <ClInclude Include="MoveComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -203,10 +206,13 @@
     <ClCompile Include="GridComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="Command.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ScoreComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Command.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="MoveComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>

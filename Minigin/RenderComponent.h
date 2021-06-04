@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseComponent.h"
 #include "Helpers.h"
+#include <iostream>
 
 
 	class Texture2D;

@@ -25,6 +25,16 @@ int GameManager::GetTilesLeft() const
 	return m_TilesLeft;
 }
 
+int GameManager::GetLevel() const
+{
+	return m_Level;
+}
+
+void GameManager::SetLevel(int lvl)
+{
+	m_Level = lvl;
+}
+
 void GameManager::SetGameType(GameType type)
 {
 	m_GameType = type;

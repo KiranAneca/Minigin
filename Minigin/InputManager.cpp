@@ -3,6 +3,18 @@
 #include <SDL.h>
 
 
+InputManager::~InputManager()
+{
+	for(auto com : m_KeyboardControls)
+	{
+		delete com.second;
+	}
+	for(auto com : m_Controls)
+	{
+		delete com.second;
+	}
+}
+
 bool InputManager::ProcessInput()
 {
 	ZeroMemory(&m_CurrentState, sizeof(XINPUT_STATE));

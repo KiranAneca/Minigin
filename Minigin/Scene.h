@@ -12,6 +12,8 @@
 		void Render() const;
 
 		bool IsActive() const;
+		void SetActive(bool active);
+		std::string GetSceneName() const;
 
 		~Scene();
 		Scene(const Scene& other) = delete;

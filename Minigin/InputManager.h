@@ -18,6 +18,7 @@ enum class ControllerButton
 class InputManager final : public Singleton<InputManager>
 {
 public:
+	virtual ~InputManager();
 	bool ProcessInput();
 	bool IsPressed(ControllerButton button);
 	bool OnButtonRelease(ControllerButton button);

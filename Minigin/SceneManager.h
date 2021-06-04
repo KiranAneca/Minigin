@@ -8,6 +8,8 @@
 		Scene& CreateScene(const std::string& name);
 		Scene& GetActiveScene() const;
 
+		void SetSceneActive(bool active, std::string name);
+
 		void Update(float deltaTime);
 		void Render();
 	private:

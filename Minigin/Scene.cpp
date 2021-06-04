@@ -35,3 +35,13 @@ bool Scene::IsActive() const
 	return m_Active;
 }
 
+void Scene::SetActive(bool active)
+{
+	m_Active = active;
+}
+
+std::string Scene::GetSceneName() const
+{
+	return m_Name;
+}
+

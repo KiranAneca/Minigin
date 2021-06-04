@@ -53,3 +53,9 @@ enum class GameType
 	Double,
 	Return
 };
+
+enum class MoveMethod
+{
+	RandomDown,
+	TowardsPlayer
+};

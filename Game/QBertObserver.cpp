@@ -67,6 +67,8 @@ void QBertObserver::Notify(const GameObject& actor, Event event)
 	case Event::Died:
 		break;
 	case Event::LevelCleared:
+		rc->SetTexture(baseTexture);
+		gm.AddTilesLeft(1);
 		break;
 	}
 }

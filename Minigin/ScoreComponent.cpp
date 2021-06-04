@@ -35,6 +35,11 @@ void ScoreComponent::SetScoreType(std::string text)
 	}
 }
 
+std::string ScoreComponent::GetScoreType() const
+{
+	return m_ScoreType;
+}
+
 void ScoreComponent::SetScore(int amount)
 {
 	m_Score = amount;
