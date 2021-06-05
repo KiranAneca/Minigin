@@ -11,21 +11,25 @@ CoilyObserver::CoilyObserver(GameObject* parent)
 
 void CoilyObserver::Notify(const GameObject& actor, Event event)
 {
+	auto ren = m_Parent->GetComponent<RenderComponent>();
+	auto mov = m_Parent->GetComponent<MoveComponent>();
 	switch (event)
 	{
 	case Event::MoveTile:
 		break;
 	case Event::Died:
 		m_Parent->GetComponent<GridComponent>()->SetGrid(0, 6);
-		m_Parent->GetComponent<RenderComponent>()->SetTexture("CoilyEgg.png");
-		m_Parent->GetComponent<RenderComponent>()->SetPosition(310, 60);
-		m_Parent->GetComponent<MoveComponent>()->SetMoveMethod(MoveMethod::RandomDown);
+		ren->SetTexture("CoilyEgg.png");
+		ren->SetPosition(310, 60);
+		mov->SetMoveMethod(MoveMethod::RandomDown);
+		mov->SetMoveEvent(MoveEvent::Nothing);
 		break;
 	case Event::LevelCleared:
 		m_Parent->GetComponent<GridComponent>()->SetGrid(0, 6);
-		m_Parent->GetComponent<RenderComponent>()->SetTexture("CoilyEgg.png");
-		m_Parent->GetComponent<RenderComponent>()->SetPosition(310, 60);
-		m_Parent->GetComponent<MoveComponent>()->SetMoveMethod(MoveMethod::RandomDown);
+		ren->SetTexture("CoilyEgg.png");
+		ren->SetPosition(310, 60);
+		mov->SetMoveMethod(MoveMethod::RandomDown);
+		mov->SetMoveEvent(MoveEvent::Nothing);
 		break;
 	}
 

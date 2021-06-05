@@ -18,11 +18,19 @@ MoveComponent::~MoveComponent()
 
 void MoveComponent::Update(float deltaTime)
 {
-	m_AccuTime += deltaTime;
-	if(m_AccuTime >= m_Interval)
+	if(!m_CanMove)
 	{
-		m_AccuTime = 0.f;
+		m_AccuTime += deltaTime;
+		if (m_AccuTime >= m_Interval)
+		{
+			m_AccuTime = 0.f;
+			m_CanMove = true;
+		}
+	}
+	if(m_CanMove && m_Method != MoveMethod::PlayerControlled)
+	{
 		Move();
+		m_CanMove = false;
 	}
 }
 
@@ -50,6 +58,10 @@ void MoveComponent::Move()
 			ren->SetPosition(ren->GetPosition().x + 32, ren->GetPosition().y + 48);
 		}
 		if (grid->GetGrid().y == 0) m_Method = MoveMethod::TowardsPlayer;
+	}
+	else if(m_Method == MoveMethod::PlayerControlled)
+	{
+		m_CanMove = false;
 	}
 	else if(m_Method == MoveMethod::TowardsPlayer)
 	{
@@ -87,9 +99,12 @@ void MoveComponent::Move()
 
 void MoveComponent::CheckHit(int2 grid, int2 otherGrid)
 {
-	if(grid.x == otherGrid.x && grid.y == otherGrid.y)
+	if(m_Event == MoveEvent::KillPlayer)
 	{
-		m_Target->GetComponent<SubjectComponent>()->Notify(*m_Target, Event::Died);
+		if (grid.x == otherGrid.x && grid.y == otherGrid.y)
+		{
+			m_Target->GetComponent<SubjectComponent>()->Notify(*m_Target, Event::Died);
+		}
 	}
 }
 
@@ -106,4 +121,14 @@ void MoveComponent::SetTarget(GameObject* go)
 void MoveComponent::SetMoveMethod(MoveMethod method)
 {
 	m_Method = method;
+}
+
+void MoveComponent::SetMoveEvent(MoveEvent event)
+{
+	m_Event = event;
+}
+
+bool MoveComponent::CanMove() const
+{
+	return m_CanMove;
 }

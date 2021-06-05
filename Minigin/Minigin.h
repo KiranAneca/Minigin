@@ -21,6 +21,8 @@ struct SDL_Window;
 		virtual void LoadApllication() const = 0;
 		virtual void CleanupApplication() = 0;
 		virtual void RunApplication() = 0;
+
+		SDL_Window* GetWindow() const;
 	
 	private:
 		static const int MsPerFrame = 16; //16 for 60 fps, 33 for 30 fps

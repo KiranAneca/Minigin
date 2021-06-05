@@ -96,13 +96,29 @@ bool InputManager::OnButtonRelease(ControllerButton button)
 
 void InputManager::BindCommand(ControllerButton button, Command* com)
 {
-	m_LastFrameInput.insert(std::pair<ControllerButton, bool>(button, false));
-	m_Controls.insert(std::pair<ControllerButton, Command*>(button, com));
+	if(m_Controls.find(button) == m_Controls.end())
+	{
+		m_LastFrameInput.insert(std::pair<ControllerButton, bool>(button, false));
+		m_Controls.insert(std::pair<ControllerButton, Command*>(button, com));
+	}
+	else
+	{
+		delete m_Controls.at(button);
+		m_Controls.at(button) = com;
+	}
 }
 
 void InputManager::BindCommand(SDL_Scancode button, Command* com)
 {
-	m_KeyboardControls.insert(std::pair<SDL_Scancode, Command*>(button, com));
+	if(m_KeyboardControls.find(button) == m_KeyboardControls.end())
+	{
+		m_KeyboardControls.insert(std::pair<SDL_Scancode, Command*>(button, com));
+	}
+	else
+	{
+		delete m_KeyboardControls.at(button);
+		m_KeyboardControls.at(button) = com;
+	}
 }
 
 void InputManager::RunCommand(ControllerButton button)

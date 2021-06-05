@@ -10,12 +10,12 @@ struct SDL_Renderer;
 	/**
 	 * Simple RAII wrapper for the SDL renderer
 	 */
-	class Renderer final : public Singleton<Renderer>
+	class Renderer : public Singleton<Renderer>
 	{
 	public:
 		void Init(SDL_Window* window);
 		void Render() const;
-		void RenderUI(Minigin* min) const;
+		void RenderUI() const;
 		void Destroy();
 
 		void RenderTexture(const Texture2D& texture, float x, float y) const;
@@ -23,7 +23,8 @@ struct SDL_Renderer;
 		void RenderTexture(const Texture2D& texture, float x, float y, Rect srcRect) const;
 
 		SDL_Renderer* GetSDLRenderer() const { return m_Renderer; }
-	private:
+		SDL_Window* GetWindow() const { return m_Window; }
+	protected:
 		SDL_Renderer* m_Renderer{};
 		SDL_Window* m_Window;
 

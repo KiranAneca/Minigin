@@ -9,6 +9,7 @@
 		Scene& GetActiveScene() const;
 
 		void SetSceneActive(bool active, std::string name);
+		void DeleteScene(std::string name);
 
 		void Update(float deltaTime);
 		void Render();

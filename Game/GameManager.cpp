@@ -35,6 +35,16 @@ void GameManager::SetLevel(int lvl)
 	m_Level = lvl;
 }
 
+int GameManager::GetScore() const
+{
+	return m_Score;
+}
+
+void GameManager::AddScore(int amount)
+{
+	m_Score += amount;
+}
+
 void GameManager::SetGameType(GameType type)
 {
 	m_GameType = type;

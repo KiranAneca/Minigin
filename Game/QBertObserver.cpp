@@ -1,6 +1,7 @@
 #include "QBertObserver.h"
 #include "GridComponent.h"
 #include "RenderComponent.h"
+#include "SubjectComponent.h"
 #include "GameManager.h"
 #include "Helpers.h"
 #include <windows.h>
@@ -35,6 +36,7 @@ void QBertObserver::Notify(const GameObject& actor, Event event)
 				if (rc->GetTexture() == baseTexture)
 				{
 					rc->SetTexture(jumpedTexture);
+					actor.GetComponent<SubjectComponent>()->Notify(actor, Event::CompleteTile);
 					gm.AddTilesLeft(-1);
 				}
 				break;
@@ -46,6 +48,7 @@ void QBertObserver::Notify(const GameObject& actor, Event event)
 				else if(rc->GetTexture() == intermediateTexture)
 				{
 					rc->SetTexture(jumpedTexture);
+					actor.GetComponent<SubjectComponent>()->Notify(actor, Event::CompleteTile);
 					gm.AddTilesLeft(-1);
 				}
 				break;
@@ -53,6 +56,7 @@ void QBertObserver::Notify(const GameObject& actor, Event event)
 				if (rc->GetTexture() == baseTexture)
 				{
 					rc->SetTexture(jumpedTexture);
+					actor.GetComponent<SubjectComponent>()->Notify(actor, Event::CompleteTile);
 					gm.AddTilesLeft(-1);
 				}
 				else if(rc->GetTexture() == jumpedTexture)

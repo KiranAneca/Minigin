@@ -41,7 +41,7 @@ void Minigin::Initialize()
 		throw std::runtime_error(std::string("SDL_CreateWindow Error: ") + SDL_GetError());
 	}
 
-	Renderer::GetInstance().Init(m_Window);
+	//Renderer::GetInstance().Init(m_Window);
 	InitializeApplication();
 }
 
@@ -85,7 +85,7 @@ void Minigin::Run()
 	LoadGame();
 
 	{
-		auto& renderer = Renderer::GetInstance();
+		//auto& renderer = Renderer::GetInstance();
 		auto& sceneManager = SceneManager::GetInstance();
 		auto& input = InputManager::GetInstance();
 
@@ -98,10 +98,10 @@ void Minigin::Run()
 			float deltaTime = std::chrono::duration<float>(currentTime - lastTime).count();
 
 			doContinue = input.ProcessInput();
-			RunApplication();
 			sceneManager.Update(deltaTime);
-			renderer.Render();
-			renderer.RenderUI(this);
+			RunApplication();
+			//renderer.Render();
+			//renderer.RenderUI(this);
 
 			lastTime = currentTime;
 
@@ -112,4 +112,9 @@ void Minigin::Run()
 	}
 
 	Cleanup();
+}
+
+struct SDL_Window* Minigin::GetWindow() const
+{
+	return m_Window;
 }

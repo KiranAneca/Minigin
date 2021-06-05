@@ -1,6 +1,8 @@
 #pragma once
 #include "Command.h"
 #include "GameManager.h"
+#include "MoveComponent.h"
+
 class GameCommands : public Command
 {
 	virtual ~GameCommands() = default;
@@ -21,22 +23,24 @@ public:
 	{
 		float2 pos = m_Ren->GetPosition();
 		int2 grid = m_Grid->GetGrid();
-		if (grid.y > 0)
+		if(m_Go->GetComponent<MoveComponent>()->CanMove())
 		{
-			m_Ren->SetPosition(pos.x - 32, pos.y + 48);
-			m_Grid->SetGrid(grid.x, grid.y - 1);
-			//std::cout << grid.x << " " << grid.y - 1 << std::endl;
-			m_Sub->Notify(*m_Go, Event::MoveTile);
-		}
-		else
-		{
-			m_Grid->SetGrid(0, 6);
-			m_Sub->Notify(*m_Go, Event::Died);
-			m_Ren->SetPosition(310, 60);
-		}
-		if(GameManager::GetInstance().GetTilesLeft() == 0)
-		{
-			m_Sub->Notify(*m_Go, Event::LevelCleared);
+			m_Go->GetComponent<MoveComponent>()->Move();
+			if (grid.y > 0)
+			{
+				m_Ren->SetPosition(pos.x - 32, pos.y + 48);
+				m_Grid->SetGrid(grid.x, grid.y - 1);
+				//std::cout << grid.x << " " << grid.y - 1 << std::endl;
+				m_Sub->Notify(*m_Go, Event::MoveTile);
+			}
+			else
+			{
+				m_Sub->Notify(*m_Go, Event::Died);
+			}
+			if (GameManager::GetInstance().GetTilesLeft() == 0)
+			{
+				m_Sub->Notify(*m_Go, Event::LevelCleared);
+			}
 		}
 	};
 
@@ -60,22 +64,24 @@ public:
 	{
 		float2 pos = m_Ren->GetPosition();
 		int2 grid = m_Grid->GetGrid();
-		if (grid.y > 0)
+		if (m_Go->GetComponent<MoveComponent>()->CanMove())
 		{
-			m_Ren->SetPosition(pos.x + 32, pos.y + 48);
-			m_Grid->SetGrid(grid.x + 1, grid.y - 1);
-			//std::cout << grid.x + 1 << " " << grid.y - 1 << std::endl;
-			m_Sub->Notify(*m_Go, Event::MoveTile);
-		}
-		else
-		{
-			m_Grid->SetGrid(0, 6);
-			m_Sub->Notify(*m_Go, Event::Died);
-			m_Ren->SetPosition(310, 60);
-		}
-		if (GameManager::GetInstance().GetTilesLeft() == 0)
-		{
-			m_Sub->Notify(*m_Go, Event::LevelCleared);
+			m_Go->GetComponent<MoveComponent>()->Move();
+			if (grid.y > 0)
+			{
+				m_Ren->SetPosition(pos.x + 32, pos.y + 48);
+				m_Grid->SetGrid(grid.x + 1, grid.y - 1);
+				//std::cout << grid.x + 1 << " " << grid.y - 1 << std::endl;
+				m_Sub->Notify(*m_Go, Event::MoveTile);
+			}
+			else
+			{
+				m_Sub->Notify(*m_Go, Event::Died);
+			}
+			if (GameManager::GetInstance().GetTilesLeft() == 0)
+			{
+				m_Sub->Notify(*m_Go, Event::LevelCleared);
+			}
 		}
 	};
 
@@ -99,22 +105,24 @@ public:
 	{
 		float2 pos = m_Ren->GetPosition();
 		int2 grid = m_Grid->GetGrid();
-		if (grid.x + grid.y < 6)
+		if (m_Go->GetComponent<MoveComponent>()->CanMove())
 		{
-			m_Ren->SetPosition(pos.x + 32, pos.y - 48);
-			m_Grid->SetGrid(grid.x, grid.y + 1);
-			//std::cout << grid.x + grid.y;
-			m_Sub->Notify(*m_Go, Event::MoveTile);
-		}
-		else
-		{
-			m_Grid->SetGrid(0, 6);
-			m_Sub->Notify(*m_Go, Event::Died);
-			m_Ren->SetPosition(310, 60);
-		}
-		if (GameManager::GetInstance().GetTilesLeft() == 0)
-		{
-			m_Sub->Notify(*m_Go, Event::LevelCleared);
+			m_Go->GetComponent<MoveComponent>()->Move();
+			if (grid.x + grid.y < 6)
+			{
+				m_Ren->SetPosition(pos.x + 32, pos.y - 48);
+				m_Grid->SetGrid(grid.x, grid.y + 1);
+				//std::cout << grid.x + grid.y;
+				m_Sub->Notify(*m_Go, Event::MoveTile);
+			}
+			else
+			{
+				m_Sub->Notify(*m_Go, Event::Died);
+			}
+			if (GameManager::GetInstance().GetTilesLeft() == 0)
+			{
+				m_Sub->Notify(*m_Go, Event::LevelCleared);
+			}
 		}
 	};
 
@@ -138,22 +146,24 @@ public:
 	{
 		float2 pos = m_Ren->GetPosition();
 		int2 grid = m_Grid->GetGrid();
-		if (grid.x > 0)
+		if (m_Go->GetComponent<MoveComponent>()->CanMove())
 		{
-			m_Ren->SetPosition(pos.x - 32, pos.y - 48);
-			m_Grid->SetGrid(grid.x - 1, grid.y + 1);
-			//std::cout << grid.x - 1 << " " << grid.y + 1 << std::endl;
-			m_Sub->Notify(*m_Go, Event::MoveTile);
-		}
-		else
-		{
-			m_Grid->SetGrid(0, 6);
-			m_Sub->Notify(*m_Go, Event::Died);
-			m_Ren->SetPosition(310, 60);
-		}
-		if (GameManager::GetInstance().GetTilesLeft() == 0)
-		{
-			m_Sub->Notify(*m_Go, Event::LevelCleared);
+			m_Go->GetComponent<MoveComponent>()->Move();
+			if (grid.x > 0)
+			{
+				m_Ren->SetPosition(pos.x - 32, pos.y - 48);
+				m_Grid->SetGrid(grid.x - 1, grid.y + 1);
+				//std::cout << grid.x - 1 << " " << grid.y + 1 << std::endl;
+				m_Sub->Notify(*m_Go, Event::MoveTile);
+			}
+			else
+			{
+				m_Sub->Notify(*m_Go, Event::Died);
+			}
+			if (GameManager::GetInstance().GetTilesLeft() == 0)
+			{
+				m_Sub->Notify(*m_Go, Event::LevelCleared);
+			}
 		}
 	};
 

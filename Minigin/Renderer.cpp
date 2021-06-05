@@ -52,21 +52,9 @@ void Renderer::Render() const
 
 }
 
-void Renderer::RenderUI(Minigin* min) const
+void Renderer::RenderUI() const
 {
-	ImGui_ImplOpenGL2_NewFrame();
-	ImGui_ImplSDL2_NewFrame(m_Window);
-	ImGui::NewFrame();
 
-	if (ImGui::Button("1 Player"))
-		min->StartGame(1);
-	if (ImGui::Button("2 Player"))
-		min->StartGame(2);
-	
-	ImGui::Render();
-	ImGui_ImplOpenGL2_RenderDrawData(ImGui::GetDrawData());
-
-	SDL_RenderPresent(m_Renderer);
 }
 
 void Renderer::Destroy()

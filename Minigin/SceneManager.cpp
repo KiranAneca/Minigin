@@ -53,3 +53,18 @@ void SceneManager::SetSceneActive(bool active, std::string name)
 		}
 	}
 }
+
+void SceneManager::DeleteScene(std::string name)
+{
+	std::vector<std::shared_ptr<Scene>>::iterator iter = m_Scenes.end();
+	for(auto it = m_Scenes.begin(); it != m_Scenes.end(); it++)
+	{
+		if(it->get()->GetSceneName() == name)
+		{
+			iter = it;
+			break;
+		}
+	}
+	if(iter != m_Scenes.end())m_Scenes.erase(iter);
+
+}

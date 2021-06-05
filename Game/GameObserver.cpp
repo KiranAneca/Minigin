@@ -16,6 +16,8 @@ void GameObserver::Notify(const GameObject& actor, Event event)
 	auto& gm = GameManager::GetInstance();
 	UNREFERENCED_PARAMETER(actor);
 
+	auto grid = actor.GetComponent<GridComponent>();
+
 	switch (event)
 	{
 	case Event::MoveTile:
@@ -23,13 +25,22 @@ void GameObserver::Notify(const GameObject& actor, Event event)
 	case Event::Died:
 		gm.LoseLife();
 		std::cout << gm.GetLives() << " lifes left\n";
-		actor.GetComponent<RenderComponent>()->SetPosition(310, 60);
-		actor.GetComponent<GridComponent>()->SetGrid(0, 6);
+		grid->SetGrid(grid->GetStartGrid());
+		actor.GetComponent<RenderComponent>()->SetPosition(118.f + (32.f * grid->GetStartGrid().y) + (64.f * grid->GetStartGrid().x), 348.f - (48.f * grid->GetStartGrid().y));
 		break;
 	case Event::LevelCleared:
-		actor.GetComponent<RenderComponent>()->SetPosition(310, 60);
-		actor.GetComponent<GridComponent>()->SetGrid(0, 6);
+		grid->SetGrid(grid->GetStartGrid());
+		actor.GetComponent<RenderComponent>()->SetPosition(118.f + (32.f * grid->GetStartGrid().y) + (64.f * grid->GetStartGrid().x), 348.f - (48.f * grid->GetStartGrid().y));
 		std::cout << "Level complete\n";
+		gm.SetLevel(gm.GetLevel() + 1);
+		if(gm.GetLevel() == 2)
+		{
+			gm.SetGameType(GameType::Double);
+		}
+		else if(gm.GetLevel() == 3)
+		{
+			gm.SetGameType(GameType::Return);
+		}
 		break;
 	}
 }

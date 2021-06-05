@@ -43,6 +43,7 @@ struct Rect
 enum class Event
 {
 	MoveTile,
+	CompleteTile,
 	Died,
 	LevelCleared
 };
@@ -57,5 +58,14 @@ enum class GameType
 enum class MoveMethod
 {
 	RandomDown,
-	TowardsPlayer
+	TowardsPlayer,
+	PlayerControlled
 };
+
+enum class MoveEvent
+{
+	KillPlayer,
+	RevertTile,
+	Nothing
+};
+

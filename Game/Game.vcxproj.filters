@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="GameComponents">
+      <UniqueIdentifier>{4626e5be-3505-4f99-8e8a-73a2e9cbdf44}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -30,13 +33,22 @@
     <ClCompile Include="GameObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameCommands.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CoilyObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LivesObserver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCommands.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="CoilyMovement.cpp">
+      <Filter>GameComponents</Filter>
+    </ClCompile>
+    <ClCompile Include="ScoreObserver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -53,13 +65,22 @@
     <ClInclude Include="GameObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameCommands.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CoilyObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LivesObserver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameCommands.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="CoilyMovement.h">
+      <Filter>GameComponents</Filter>
+    </ClInclude>
+    <ClInclude Include="ScoreObserver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

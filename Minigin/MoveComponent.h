@@ -6,23 +6,26 @@ class MoveComponent : public BaseComponent
 {
 public:
 	explicit MoveComponent(GameObject* parent);
-	~MoveComponent();
+	virtual ~MoveComponent();
 
-	void Update(float deltaTime) override;
-	void Render() const override;
+	virtual void Update(float deltaTime) override;
+	virtual void Render() const override;
 	void SetInterval(float time);
 	void SetTarget(GameObject* go);
 	void SetMoveMethod(MoveMethod method);
-
-private:
-	void Move();
+	void SetMoveEvent(MoveEvent event);
+	bool CanMove() const;
+	virtual void Move();
+protected:
 	void CheckHit(int2 grid, int2 otherGrid);
 	
 	float m_AccuTime;
 	float m_Interval;
+	bool m_CanMove;
 
 	GameObject* m_Target;
 
 	MoveMethod m_Method = MoveMethod::RandomDown;
+	MoveEvent m_Event = MoveEvent::Nothing;
 };
 
