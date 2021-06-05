@@ -69,3 +69,13 @@ std::string GameManager::GetTileJumpedTexture() const
 {
 	return m_TileCompletedTexture;
 }
+
+bool GameManager::CanSeeMenu() const
+{
+	return m_ShowMenu;
+}
+
+void GameManager::SetSeeMenu(bool active)
+{
+	m_ShowMenu = active;
+}

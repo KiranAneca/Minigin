@@ -35,8 +35,6 @@ void Application::InitializeApplication()
 void Application::LoadApllication() const
 {
 	LoadMainMenu();
-	//LoadGameSinglePlayer();
-	//LoadGameMultiplayer();
 
 }
 
@@ -347,6 +345,11 @@ void Application::LoadGameMultiplayer() const
 	input.BindCommand(ControllerButton::ButtonX, new MoveLeftDownCommand(qbertSprite2, qbertGrid2, qSubject2, qbert2.get()));
 	input.BindCommand(ControllerButton::ButtonB, new MoveRightUpCommand(qbertSprite2, qbertGrid2, qSubject2, qbert2.get()));
 	input.BindCommand(ControllerButton::ButtonY, new MoveLeftUpCommand(qbertSprite2, qbertGrid2, qSubject2, qbert2.get()));
+}
+
+void Application::LoadGameVersus() const
+{
+
 }
 
 void Application::LoadMainMenu() const

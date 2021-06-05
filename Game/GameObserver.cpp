@@ -3,6 +3,7 @@
 #include "ScoreComponent.h"
 #include "RenderComponent.h"
 #include "GridComponent.h"
+#include "SceneManager.h"
 #include <iostream>
 #include <windows.h>
 
@@ -27,6 +28,16 @@ void GameObserver::Notify(const GameObject& actor, Event event)
 		std::cout << gm.GetLives() << " lifes left\n";
 		grid->SetGrid(grid->GetStartGrid());
 		actor.GetComponent<RenderComponent>()->SetPosition(118.f + (32.f * grid->GetStartGrid().y) + (64.f * grid->GetStartGrid().x), 348.f - (48.f * grid->GetStartGrid().y));
+		if(gm.GetLives() == 0)
+		{
+			auto& sceneManager = SceneManager::GetInstance();
+			sceneManager.SetSceneActive(true, "MainMenu");
+			sceneManager.DeleteScene("GameSceneSingle");
+			sceneManager.DeleteScene("GameSceneMulti");
+			sceneManager.DeleteScene("GameSceneVersus");
+
+			gm.SetSeeMenu(true);
+		}
 		break;
 	case Event::LevelCleared:
 		grid->SetGrid(grid->GetStartGrid());

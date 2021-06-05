@@ -24,6 +24,9 @@ public:
 	std::string GetTileBaseTexture() const;
 	std::string GetTileIntermediateTexture() const;
 	std::string GetTileJumpedTexture() const;
+
+	bool CanSeeMenu() const;
+	void SetSeeMenu(bool active);
 private:
 	friend class Singleton<GameManager>;
 	GameManager() = default;
@@ -33,6 +36,7 @@ private:
 	int m_Score;
 
 	int m_Level = 1;
+	bool m_ShowMenu = true;
 
 	std::string m_TileBaseTexture = "CubeBase.png";
 	std::string m_TileIntermediateTexture = "CubeIntermediate.png";
