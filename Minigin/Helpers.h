@@ -1,4 +1,5 @@
 #pragma once
+#include <ios>
 
 struct int2
 {
@@ -67,5 +68,11 @@ enum class MoveEvent
 	KillPlayer,
 	RevertTile,
 	Nothing
+};
+
+struct levelLayout
+{
+	int Level;
+	std::string Type;
 };
 

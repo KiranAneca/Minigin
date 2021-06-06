@@ -10,5 +10,11 @@ public:
 	void Update(float deltaTime) override;
 	void Render() const override;
 	void Move() override;
+
+	void SetGainControl(bool active);
+	bool HasControl() const;
+
+private:
+	bool m_GainControl = false;
 };
 

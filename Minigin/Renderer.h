@@ -10,7 +10,7 @@ struct SDL_Renderer;
 	/**
 	 * Simple RAII wrapper for the SDL renderer
 	 */
-	class Renderer : public Singleton<Renderer>
+	class Renderer final : public Singleton<Renderer>
 	{
 	public:
 		void Init(SDL_Window* window);

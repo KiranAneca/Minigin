@@ -1,0 +1,14 @@
+[
+  {
+    "Level": 1,
+    "Type" : "Single" 
+  },
+  {
+    "Level": 2,
+    "Type" :  "Double" 
+  },
+  {
+    "Level": 3,
+    "Type" :  "Return" 
+  }
+]

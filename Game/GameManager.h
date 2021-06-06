@@ -2,6 +2,7 @@
 #include "Singleton.h"
 #include "Helpers.h"
 #include <iostream>
+#include <vector>
 
 class GameManager final : public Singleton<GameManager>
 {
@@ -29,7 +30,7 @@ public:
 	void SetSeeMenu(bool active);
 private:
 	friend class Singleton<GameManager>;
-	GameManager() = default;
+	GameManager();
 
 	int m_TilesLeft;
 	int m_Lives;
@@ -42,5 +43,7 @@ private:
 	std::string m_TileIntermediateTexture = "CubeIntermediate.png";
 	std::string m_TileCompletedTexture = "CubeJumped.png";
 	GameType m_GameType = GameType::Single;
+
+	std::vector<levelLayout> m_Levels;
 };
 

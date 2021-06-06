@@ -1,5 +1,6 @@
 #include "GameManager.h"
 
+
 void GameManager::AddTilesLeft(int amount)
 {
 	m_TilesLeft += amount;
@@ -78,4 +79,8 @@ bool GameManager::CanSeeMenu() const
 void GameManager::SetSeeMenu(bool active)
 {
 	m_ShowMenu = active;
+}
+
+GameManager::GameManager()
+{
 }

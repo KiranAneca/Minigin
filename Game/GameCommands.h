@@ -2,6 +2,7 @@
 #include "Command.h"
 #include "GameManager.h"
 #include "MoveComponent.h"
+#include "SoundManager.h"
 
 class GameCommands : public Command
 {
@@ -21,25 +22,30 @@ public:
 		, m_Go(go) {}
 	void Execute() override
 	{
-		float2 pos = m_Ren->GetPosition();
-		int2 grid = m_Grid->GetGrid();
-		if(m_Go->GetComponent<MoveComponent>()->CanMove())
+		if(GameManager::GetInstance().GetLives() != 0)
 		{
-			m_Go->GetComponent<MoveComponent>()->Move();
-			if (grid.y > 0)
+			float2 pos = m_Ren->GetPosition();
+			int2 grid = m_Grid->GetGrid();
+			if (m_Go->GetComponent<MoveComponent>()->CanMove())
 			{
-				m_Ren->SetPosition(pos.x - 32, pos.y + 48);
-				m_Grid->SetGrid(grid.x, grid.y - 1);
-				//std::cout << grid.x << " " << grid.y - 1 << std::endl;
-				m_Sub->Notify(*m_Go, Event::MoveTile);
-			}
-			else
-			{
-				m_Sub->Notify(*m_Go, Event::Died);
-			}
-			if (GameManager::GetInstance().GetTilesLeft() == 0)
-			{
-				m_Sub->Notify(*m_Go, Event::LevelCleared);
+				if (grid.y > 0)
+				{
+					m_Ren->SetPosition(pos.x - 32, pos.y + 48);
+					m_Grid->SetGrid(grid.x, grid.y - 1);
+					//std::cout << grid.x << " " << grid.y - 1 << std::endl;
+					m_Sub->Notify(*m_Go, Event::MoveTile);
+					if (GameManager::GetInstance().GetLives() != 0) m_Go->GetComponent<MoveComponent>()->Move();
+					SoundManager::GetInstance().PlaySoundeffect("Data/Jump.wav");
+				}
+				else
+				{
+					m_Sub->Notify(*m_Go, Event::Died);
+				}
+				if (GameManager::GetInstance().GetTilesLeft() == 0)
+				{
+					m_Sub->Notify(*m_Go, Event::LevelCleared);
+				}
+
 			}
 		}
 	};
@@ -62,25 +68,29 @@ public:
 		, m_Go(go) {}
 	void Execute() override
 	{
-		float2 pos = m_Ren->GetPosition();
-		int2 grid = m_Grid->GetGrid();
-		if (m_Go->GetComponent<MoveComponent>()->CanMove())
+		if (GameManager::GetInstance().GetLives() != 0)
 		{
-			m_Go->GetComponent<MoveComponent>()->Move();
-			if (grid.y > 0)
+			float2 pos = m_Ren->GetPosition();
+			int2 grid = m_Grid->GetGrid();
+			if (m_Go->GetComponent<MoveComponent>()->CanMove())
 			{
-				m_Ren->SetPosition(pos.x + 32, pos.y + 48);
-				m_Grid->SetGrid(grid.x + 1, grid.y - 1);
-				//std::cout << grid.x + 1 << " " << grid.y - 1 << std::endl;
-				m_Sub->Notify(*m_Go, Event::MoveTile);
-			}
-			else
-			{
-				m_Sub->Notify(*m_Go, Event::Died);
-			}
-			if (GameManager::GetInstance().GetTilesLeft() == 0)
-			{
-				m_Sub->Notify(*m_Go, Event::LevelCleared);
+				if (grid.y > 0)
+				{
+					m_Ren->SetPosition(pos.x + 32, pos.y + 48);
+					m_Grid->SetGrid(grid.x + 1, grid.y - 1);
+					//std::cout << grid.x + 1 << " " << grid.y - 1 << std::endl;
+					m_Sub->Notify(*m_Go, Event::MoveTile);
+					if (GameManager::GetInstance().GetLives() != 0) m_Go->GetComponent<MoveComponent>()->Move();
+					SoundManager::GetInstance().PlaySoundeffect("Data/Jump.wav");
+				}
+				else
+				{
+					m_Sub->Notify(*m_Go, Event::Died);
+				}
+				if (GameManager::GetInstance().GetTilesLeft() == 0)
+				{
+					m_Sub->Notify(*m_Go, Event::LevelCleared);
+				}
 			}
 		}
 	};
@@ -103,25 +113,29 @@ public:
 		, m_Go(go) {}
 	void Execute() override
 	{
-		float2 pos = m_Ren->GetPosition();
-		int2 grid = m_Grid->GetGrid();
-		if (m_Go->GetComponent<MoveComponent>()->CanMove())
+		if (GameManager::GetInstance().GetLives() != 0)
 		{
-			m_Go->GetComponent<MoveComponent>()->Move();
-			if (grid.x + grid.y < 6)
+			float2 pos = m_Ren->GetPosition();
+			int2 grid = m_Grid->GetGrid();
+			if (m_Go->GetComponent<MoveComponent>()->CanMove())
 			{
-				m_Ren->SetPosition(pos.x + 32, pos.y - 48);
-				m_Grid->SetGrid(grid.x, grid.y + 1);
-				//std::cout << grid.x + grid.y;
-				m_Sub->Notify(*m_Go, Event::MoveTile);
-			}
-			else
-			{
-				m_Sub->Notify(*m_Go, Event::Died);
-			}
-			if (GameManager::GetInstance().GetTilesLeft() == 0)
-			{
-				m_Sub->Notify(*m_Go, Event::LevelCleared);
+				if (grid.x + grid.y < 6)
+				{
+					m_Ren->SetPosition(pos.x + 32, pos.y - 48);
+					m_Grid->SetGrid(grid.x, grid.y + 1);
+					//std::cout << grid.x + grid.y;
+					m_Sub->Notify(*m_Go, Event::MoveTile);
+					if (GameManager::GetInstance().GetLives() != 0) m_Go->GetComponent<MoveComponent>()->Move();
+					SoundManager::GetInstance().PlaySoundeffect("Data/Jump.wav");
+				}
+				else
+				{
+					m_Sub->Notify(*m_Go, Event::Died);
+				}
+				if (GameManager::GetInstance().GetTilesLeft() == 0)
+				{
+					m_Sub->Notify(*m_Go, Event::LevelCleared);
+				}
 			}
 		}
 	};
@@ -144,25 +158,29 @@ public:
 		, m_Go(go) {}
 	void Execute() override
 	{
-		float2 pos = m_Ren->GetPosition();
-		int2 grid = m_Grid->GetGrid();
-		if (m_Go->GetComponent<MoveComponent>()->CanMove())
+		if (GameManager::GetInstance().GetLives() != 0)
 		{
-			m_Go->GetComponent<MoveComponent>()->Move();
-			if (grid.x > 0)
+			float2 pos = m_Ren->GetPosition();
+			int2 grid = m_Grid->GetGrid();
+			if (m_Go->GetComponent<MoveComponent>()->CanMove())
 			{
-				m_Ren->SetPosition(pos.x - 32, pos.y - 48);
-				m_Grid->SetGrid(grid.x - 1, grid.y + 1);
-				//std::cout << grid.x - 1 << " " << grid.y + 1 << std::endl;
-				m_Sub->Notify(*m_Go, Event::MoveTile);
-			}
-			else
-			{
-				m_Sub->Notify(*m_Go, Event::Died);
-			}
-			if (GameManager::GetInstance().GetTilesLeft() == 0)
-			{
-				m_Sub->Notify(*m_Go, Event::LevelCleared);
+				if (grid.x > 0)
+				{
+					m_Ren->SetPosition(pos.x - 32, pos.y - 48);
+					m_Grid->SetGrid(grid.x - 1, grid.y + 1);
+					//std::cout << grid.x - 1 << " " << grid.y + 1 << std::endl;
+					m_Sub->Notify(*m_Go, Event::MoveTile);
+					if (GameManager::GetInstance().GetLives() != 0) m_Go->GetComponent<MoveComponent>()->Move();
+					SoundManager::GetInstance().PlaySoundeffect("Data/Jump.wav");
+				}
+				else
+				{
+					m_Sub->Notify(*m_Go, Event::Died);
+				}
+				if (GameManager::GetInstance().GetTilesLeft() == 0)
+				{
+					m_Sub->Notify(*m_Go, Event::LevelCleared);
+				}
 			}
 		}
 	};

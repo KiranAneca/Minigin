@@ -10,6 +10,7 @@ public:
 
 	virtual void Update(float deltaTime) override;
 	virtual void Render() const override;
+	MoveEvent GetEvent() const;
 	void SetInterval(float time);
 	void SetTarget(GameObject* go);
 	void SetMoveMethod(MoveMethod method);
@@ -17,7 +18,7 @@ public:
 	bool CanMove() const;
 	virtual void Move();
 protected:
-	void CheckHit(int2 grid, int2 otherGrid);
+	void CheckHit(int2 grid, int2 otherGrid, MoveEvent otherEvent);
 	
 	float m_AccuTime;
 	float m_Interval;

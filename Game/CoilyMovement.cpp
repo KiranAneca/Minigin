@@ -3,6 +3,7 @@
 #include "GameObject.h"
 #include "GridComponent.h"
 #include "RenderComponent.h"
+#include "GameManager.h"
 
 CoilyMovement::CoilyMovement(GameObject* parent)
 	: MoveComponent(parent)
@@ -25,14 +26,28 @@ void CoilyMovement::Render() const
 void CoilyMovement::Move()
 {
 	MoveComponent::Move();
-	auto ren = m_Parent->GetComponent<RenderComponent>();
-	if(m_Event == MoveEvent::Nothing)
+	if(GameManager::GetInstance().GetLives() != 0 )
 	{
-		if (m_Parent->GetComponent<GridComponent>()->GetGrid().y == 0)
+		auto ren = m_Parent->GetComponent<RenderComponent>();
+		if (m_Event == MoveEvent::Nothing)
 		{
-			ren->SetTexture("Coily.png");
-			ren->SetPosition(ren->GetPosition().x, ren->GetPosition().y - 30);
-			m_Event = MoveEvent::KillPlayer;
+			if (m_Parent->GetComponent<GridComponent>()->GetGrid().y == 0)
+			{
+				ren->SetTexture("Coily.png");
+				ren->SetPosition(ren->GetPosition().x, ren->GetPosition().y - 30);
+				m_Event = MoveEvent::KillPlayer;
+				if (m_GainControl) m_Method = MoveMethod::PlayerControlled;
+			}
 		}
 	}
+}
+
+void CoilyMovement::SetGainControl(bool active)
+{
+	m_GainControl = active;
+}
+
+bool CoilyMovement::HasControl() const
+{
+	return m_GainControl;
 }

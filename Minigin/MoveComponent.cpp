@@ -38,6 +38,11 @@ void MoveComponent::Render() const
 {
 }
 
+MoveEvent MoveComponent::GetEvent() const
+{
+	return m_Event;
+}
+
 void MoveComponent::Move() 
 {
 	auto grid = m_Parent->GetComponent<GridComponent>();
@@ -94,16 +99,20 @@ void MoveComponent::Move()
 			}
 		}
 	}
-	CheckHit(grid->GetGrid(), targetGrid->GetGrid()); // Collision detection
+	CheckHit(grid->GetGrid(), targetGrid->GetGrid(), m_Target->GetComponent<MoveComponent>()->GetEvent()); // Collision detection
 }
 
-void MoveComponent::CheckHit(int2 grid, int2 otherGrid)
+void MoveComponent::CheckHit(int2 grid, int2 otherGrid, MoveEvent otherEvent)
 {
-	if(m_Event == MoveEvent::KillPlayer)
+	if(m_Event == MoveEvent::KillPlayer || otherEvent == MoveEvent::KillPlayer)
 	{
 		if (grid.x == otherGrid.x && grid.y == otherGrid.y)
 		{
-			m_Target->GetComponent<SubjectComponent>()->Notify(*m_Target, Event::Died);
+			auto target = m_Target->GetComponent<SubjectComponent>();
+			auto parent = m_Parent->GetComponent<SubjectComponent>();
+			if (target != nullptr) target->Notify(*m_Target, Event::Died);
+			if (parent != nullptr) parent->Notify(*m_Parent, Event::Died);
+			//m_Target->GetComponent<SubjectComponent>()->Notify(*m_Target, Event::Died);
 		}
 	}
 }
