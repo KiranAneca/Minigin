@@ -4,7 +4,6 @@
 #include "SubjectComponent.h"
 #include "GameManager.h"
 #include "Helpers.h"
-#include <windows.h>
 
 #include <iostream>
 
@@ -77,9 +76,8 @@ void QBertObserver::Notify(const GameObject& actor, Event event)
 	}
 }
 
-void QBertObserver::Update(float deltaTime)
+void QBertObserver::Update(float)
 {
-	UNREFERENCED_PARAMETER(deltaTime);
 }
 
 void QBertObserver::Render() const
