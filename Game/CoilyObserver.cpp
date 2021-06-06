@@ -1,5 +1,4 @@
 #include "CoilyObserver.h"
-#include <Windows.h>
 #include "GridComponent.h"
 #include "RenderComponent.h"
 #include "MoveComponent.h"
@@ -9,7 +8,7 @@ CoilyObserver::CoilyObserver(GameObject* parent)
 {
 }
 
-void CoilyObserver::Notify(const GameObject& actor, Event event)
+void CoilyObserver::Notify(const GameObject&, Event event)
 {
 	auto ren = m_Parent->GetComponent<RenderComponent>();
 	auto mov = m_Parent->GetComponent<MoveComponent>();
@@ -33,12 +32,10 @@ void CoilyObserver::Notify(const GameObject& actor, Event event)
 		break;
 	}
 
-	UNREFERENCED_PARAMETER(actor);
 }
 
-void CoilyObserver::Update(float deltaTime)
+void CoilyObserver::Update(float)
 {
-	UNREFERENCED_PARAMETER(deltaTime);
 }
 
 void CoilyObserver::Render() const

@@ -1,5 +1,4 @@
 #include "SoundManager.h"
-#include <Windows.h>
 
 void SoundManager::Update(float)
 {

@@ -4,6 +4,7 @@
 #include <SDL.h>
 #include "SceneManager.h"
 #include "GameManager.h"
+
 #include "imgui.h"
 #include "backends/imgui_impl_opengl2.h"
 #include "backends/imgui_impl_sdl.h"
@@ -31,12 +32,17 @@ void GameRenderer::RenderUI(Application* app) const
 	flags |= ImGuiWindowFlags_NoResize;
 	flags |= ImGuiWindowFlags_NoMove;
 	flags |= ImGuiWindowFlags_AlwaysAutoResize;
+
 	
 	bool show = GameManager::GetInstance().CanSeeMenu();
 	if(show)
 	{
 		ImGui::Begin("Gamemodes", &show, flags);
 
+		ImGui::Text("Controls:");
+		ImGui::Text("Movement player1: numpad 1, 3, 7, 9");
+		ImGui::Text("Movement player2: controller a, b, x, y");
+		
 		if (ImGui::Button("1 Player", ImVec2(100, 25)))
 		{
 			app->LoadGameSinglePlayer();

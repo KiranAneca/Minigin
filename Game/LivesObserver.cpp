@@ -4,17 +4,15 @@
 #include "TextRenderComponent.h"
 #include "GridComponent.h"
 #include <iostream>
-#include <Windows.h>
 
 LivesObserver::LivesObserver(GameObject* parent)
 	:Observer(parent)
 {
 }
 
-void LivesObserver::Notify(const GameObject& actor, Event event)
+void LivesObserver::Notify(const GameObject&, Event event)
 {
 	auto& gm = GameManager::GetInstance();
-	UNREFERENCED_PARAMETER(actor);
 
 	auto score = m_Parent->GetComponent<ScoreComponent>();
 
@@ -33,9 +31,8 @@ void LivesObserver::Notify(const GameObject& actor, Event event)
 	}
 }
 
-void LivesObserver::Update(float deltaTime)
+void LivesObserver::Update(float)
 {
-	UNREFERENCED_PARAMETER(deltaTime);
 }
 
 void LivesObserver::Render() const

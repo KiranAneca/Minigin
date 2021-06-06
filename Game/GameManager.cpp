@@ -1,5 +1,7 @@
 #include "GameManager.h"
-
+#include "json.hpp"
+#include <fstream>
+#include "SceneManager.h"
 
 void GameManager::AddTilesLeft(int amount)
 {
@@ -34,6 +36,30 @@ int GameManager::GetLevel() const
 void GameManager::SetLevel(int lvl)
 {
 	m_Level = lvl;
+	if(lvl > (int) m_Levels.size())
+	{
+		auto& sceneManager = SceneManager::GetInstance();
+		GameManager::GetInstance().SetSeeMenu(true);
+		sceneManager.SetSceneActive(true, "MainMenu");
+		sceneManager.DeleteScene("GameSceneSingle");
+		sceneManager.DeleteScene("GameSceneMulti");
+		sceneManager.DeleteScene("GameSceneVersus");
+	}
+	else
+	{
+		if (m_Levels[m_Level - 1].Type == "Single")
+		{
+			m_GameType = GameType::Single;
+		}
+		else if (m_Levels[m_Level - 1].Type == "Double")
+		{
+			m_GameType = GameType::Double;
+		}
+		else if (m_Levels[m_Level - 1].Type == "Return")
+		{
+			m_GameType = GameType::Return;
+		}
+	}
 }
 
 int GameManager::GetScore() const
@@ -79,8 +105,25 @@ bool GameManager::CanSeeMenu() const
 void GameManager::SetSeeMenu(bool active)
 {
 	m_ShowMenu = active;
+	if(active)
+	{
+		m_Score = 0;
+	}
 }
 
 GameManager::GameManager()
 {
+	std::fstream file("Data/Levels.json");
+	nlohmann::json temp;
+	if(file.is_open())
+	{
+		file >> temp;
+		for (auto obj : temp["Levels"])
+		{
+			levelLayout level;
+			level.Level = obj["Level"];
+			level.Type = obj["Type"];
+			m_Levels.push_back(level);
+		}
+	}
 }
