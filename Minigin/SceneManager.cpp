@@ -33,7 +33,7 @@ Scene& SceneManager::CreateScene(const std::string& name)
 
 Scene& SceneManager::GetActiveScene() const
 {
-	for(int i = 0; i < m_Scenes.size(); ++i)
+	for(size_t i = 0; i < m_Scenes.size(); ++i)
 	{
 		if(m_Scenes[i]->IsActive())
 		{
@@ -45,7 +45,7 @@ Scene& SceneManager::GetActiveScene() const
 
 void SceneManager::SetSceneActive(bool active, std::string name)
 {
-	for (int i = 0; i < m_Scenes.size(); ++i)
+	for (size_t i = 0; i < m_Scenes.size(); ++i)
 	{
 		if (m_Scenes[i]->GetSceneName() == name)
 		{
