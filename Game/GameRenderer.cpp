@@ -5,13 +5,19 @@
 #include "SceneManager.h"
 #include "GameManager.h"
 
-#include "imgui.h"
+#include <imgui.h>
 #include "backends/imgui_impl_opengl2.h"
 #include "backends/imgui_impl_sdl.h"
+
 
 void GameRenderer::Init(SDL_Window* window)
 {
 	Renderer::GetInstance().Init(window);
+
+	ImGuiIO& io = ImGui::GetIO();
+	io.Fonts->AddFontDefault();
+
+	io.Fonts->Build();
 }
 
 void GameRenderer::Render() const
@@ -24,9 +30,9 @@ void GameRenderer::RenderUI(Application* app) const
 	
 	ImGui_ImplOpenGL2_NewFrame();
 	ImGui_ImplSDL2_NewFrame(Renderer::GetInstance().GetWindow());
-
+	
 	ImGui::NewFrame();
-
+	
 	ImGuiWindowFlags flags = 0;
 	flags |= ImGuiWindowFlags_NoTitleBar;
 	flags |= ImGuiWindowFlags_NoResize;
@@ -39,6 +45,7 @@ void GameRenderer::RenderUI(Application* app) const
 	{
 		ImGui::Begin("Gamemodes", &show, flags);
 
+		
 		ImGui::Text("Controls:");
 		ImGui::Text("Movement player1: numpad 1, 3, 7, 9");
 		ImGui::Text("Movement player2: controller a, b, x, y");
