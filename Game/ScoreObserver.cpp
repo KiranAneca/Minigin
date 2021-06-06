@@ -1,4 +1,5 @@
 #include "ScoreObserver.h"
+#include <Windows.h>
 #include "GameManager.h"
 #include "ScoreComponent.h"
 
@@ -7,9 +8,10 @@ ScoreObserver::ScoreObserver(GameObject* parent)
 {
 }
 
-void ScoreObserver::Notify(const GameObject&, Event event)
+void ScoreObserver::Notify(const GameObject& actor, Event event)
 {
 	auto& gm = GameManager::GetInstance();
+	UNREFERENCED_PARAMETER(actor);
 
 	auto score = m_Parent->GetComponent<ScoreComponent>();
 
@@ -30,8 +32,9 @@ void ScoreObserver::Notify(const GameObject&, Event event)
 	}
 }
 
-void ScoreObserver::Update(float)
+void ScoreObserver::Update(float deltaTime)
 {
+	UNREFERENCED_PARAMETER(deltaTime);
 }
 
 void ScoreObserver::Render() const

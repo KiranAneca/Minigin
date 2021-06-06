@@ -11,8 +11,9 @@ GridComponent::~GridComponent()
 {
 }
 
-void GridComponent::Update(float)
+void GridComponent::Update(float deltaTime)
 {
+	UNREFERENCED_PARAMETER(deltaTime);
 }
 
 void GridComponent::SetGrid(int2 grid)

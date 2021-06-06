@@ -40,7 +40,6 @@ public:
 				else
 				{
 					m_Sub->Notify(*m_Go, Event::Died);
-					SoundManager::GetInstance().PlaySoundeffect("Data/Die.wav");
 				}
 				if (GameManager::GetInstance().GetTilesLeft() == 0)
 				{
@@ -87,7 +86,6 @@ public:
 				else
 				{
 					m_Sub->Notify(*m_Go, Event::Died);
-					SoundManager::GetInstance().PlaySoundeffect("Data/Die.wav");
 				}
 				if (GameManager::GetInstance().GetTilesLeft() == 0)
 				{
@@ -133,7 +131,6 @@ public:
 				else
 				{
 					m_Sub->Notify(*m_Go, Event::Died);
-					SoundManager::GetInstance().PlaySoundeffect("Data/Die.wav");
 				}
 				if (GameManager::GetInstance().GetTilesLeft() == 0)
 				{
@@ -179,7 +176,6 @@ public:
 				else
 				{
 					m_Sub->Notify(*m_Go, Event::Died);
-					SoundManager::GetInstance().PlaySoundeffect("Data/Die.wav");
 				}
 				if (GameManager::GetInstance().GetTilesLeft() == 0)
 				{

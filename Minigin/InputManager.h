@@ -1,9 +1,6 @@
 #pragma once
-
 #include <Windows.h>
-#include <windef.h>
 #include <XInput.h>
-#pragma comment(lib, "Xinput.lib")
 #include <map>
 #include <SDL.h>
 

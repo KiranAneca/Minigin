@@ -33,7 +33,7 @@ private:
 	GameManager();
 
 	int m_TilesLeft;
-	unsigned int m_Lives;
+	int m_Lives;
 	int m_Score;
 
 	int m_Level = 1;

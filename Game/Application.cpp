@@ -57,7 +57,6 @@ void Application::LoadGameSinglePlayer() const
 	gameScene.SetActive(false);
 
 	gm.SetLives(3);
-	gm.SetLevel(1);
 
 	// Background
 	auto go = std::make_shared<GameObject>();
@@ -93,7 +92,7 @@ void Application::LoadGameSinglePlayer() const
 	qbertSprite->SetTexture("QBert.png");
 	qbertSprite->SetPosition(310, 60);
 	qbertSprite->SetSourceRect(127, 0, 32, 32);
-	qMovement->SetInterval(0.6f);
+	qMovement->SetInterval(1.f);
 	qMovement->SetMoveMethod(MoveMethod::PlayerControlled);
 
 	qbert->AddComponent(qbertSprite);
@@ -133,7 +132,7 @@ void Application::LoadGameSinglePlayer() const
 	coilyGrid->SetStartGrid(0, 6);
 	coilySprite->SetTexture("CoilyEgg.png");
 	coilySprite->SetPosition(310, 60);
-	coilyMovement->SetInterval(1.f);
+	coilyMovement->SetInterval(1.5f);
 	coilyMovement->SetTarget(qbert.get());
 	coily->AddComponent(coilySprite);
 	coily->AddComponent(coilyGrid);
@@ -197,7 +196,6 @@ void Application::LoadGameMultiplayer() const
 	gameScene.SetActive(false);
 
 	gm.SetLives(3);
-	gm.SetLevel(1);
 
 	// Background
 	auto go = std::make_shared<GameObject>();
@@ -362,7 +360,6 @@ void Application::LoadGameVersus() const
 	gameScene.SetActive(false);
 
 	gm.SetLives(3);
-	gm.SetLevel(1);
 
 	// Background
 	auto go = std::make_shared<GameObject>();
